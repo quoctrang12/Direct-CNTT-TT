@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location/Search_details_screen.dart';
+import 'package:location/constrain.dart';
 
 class SearchScreen extends StatefulWidget {
   static const routeName = '/search';
@@ -9,53 +10,76 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  final search = ValueNotifier<String>('');
-  List<int> pairsList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
+  final from = ValueNotifier<String>('0');
+  final to = ValueNotifier<String>('');
+  List<String> recentlySearch = [];
+  final TextEditingController _controller = new TextEditingController();
+  final TextEditingController _controller1 = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leadingWidth: 40,
-        title: SearchBox(),
-        iconTheme: IconThemeData(
-          color: Color(0xFF0C9869).withOpacity(0.5),
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
-      body: Container(
-        padding: EdgeInsets.only(top: 20.0),
-        child: Center(
-          child: ValueListenableBuilder<String>(
-            valueListenable: search,
-            builder: ((context, value, child) => SearchListView(pairsList)),
+      resizeToAvoidBottomInset: false,
+      body: Column(
+        children: [
+          fromInputBox(),
+          toInputBox(),
+          Container(
+            height: MediaQuery.of(context).size.height * .6,
+            width: MediaQuery.of(context).size.width,
+            padding: EdgeInsets.only(top: 20.0),
+            child: Center(
+              child: ValueListenableBuilder<String>(
+                valueListenable: to,
+                builder: ((context, value, child) =>
+                    searchListView(recentlySearch)),
+              ),
+            ),
           ),
-          // builder: ((context, value, child) => Text(value)),
-        ),
-        // child:
+        ],
       ),
     );
   }
 
-  Widget SearchListView(List pairsList) {
-    List<int> matchQuery = [];
-    for (var fruit in pairsList) {
-      String room = "Phòng " + fruit.toString();
-      if (room.toLowerCase().contains(search.value.toLowerCase())) {
-        matchQuery.add(fruit);
+  Widget searchListView(List recentlySearch) {
+    List matchQuery = [];
+    for (var recent in recentlySearch) {
+      if (recent.toLowerCase().contains(to.value.toLowerCase())) {
+        matchQuery.add(recent);
       }
     }
-
     return ListView.builder(
       itemCount: matchQuery.length,
       itemBuilder: (ctx, i) {
         return ListTile(
-          title: Text("Phòng " + matchQuery[i].toString()),
+          title: Row(
+            children: [
+              Icon(
+                Icons.access_time,
+                size: 30,
+              ),
+              SizedBox(
+                width: 5,
+              ),
+              Text(
+                matchQuery[i],
+                style: poppins.copyWith(
+                  fontSize: 17,
+                ),
+              ),
+              Spacer(),
+              Icon(
+                Icons.arrow_forward_ios_rounded,
+                size: 20,
+              )
+            ],
+          ),
           onTap: () {
-            Navigator.of(context).pushNamed(
-              SearchDetailScreen.routeName,
-              arguments: matchQuery[i],
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    SearchDetailScreen(from: from.value, to: matchQuery[i]),
+              ),
             );
           },
         );
@@ -63,51 +87,93 @@ class _SearchScreenState extends State<SearchScreen> {
     );
   }
 
-  Widget IconSearch() {
-    return IconButton(
-      onPressed: () {},
-      icon: const Icon(Icons.search),
-      color: Color(0xFF0C9869).withOpacity(0.5),
-    );
-  }
-
-  Widget SearchBox() {
+  Widget fromInputBox() {
     return Container(
-      margin: EdgeInsets.only(right: 0.0),
       alignment: Alignment.center,
-      padding: EdgeInsets.symmetric(horizontal: 10.0),
+      padding: EdgeInsets.symmetric(horizontal: 15.0),
       height: 58,
       decoration: const BoxDecoration(
         color: Colors.white,
       ),
       child: TextField(
+        controller: _controller,
         onSubmitted: ((value) {
-          if (!value.isEmpty) {
-            String searchRoom = value.substring(value.indexOf(' ') + 1);
-            var Room = int.parse(searchRoom);
-
-            print(Room);
-            Navigator.of(context).pushNamed(
-              SearchDetailScreen.routeName,
-              arguments: Room,
+          if (value.isNotEmpty && to.value.isNotEmpty) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    SearchDetailScreen(from: from.value, to: to.value),
+              ),
             );
           }
         }),
         onChanged: (value) {
-          search.value = value;
+          from.value = value;
         },
         decoration: InputDecoration(
-            hintText: "Search",
+            hintText: "Vị trí của bạn",
             hintStyle: TextStyle(
-              color: Color(0xFF0C9869).withOpacity(0.5),
+              color: blue,
             ),
             border: InputBorder.none,
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                color: Color(0xFF0C9869).withOpacity(0.5),
+                color: blue,
               ),
             ),
-            suffixIcon: IconSearch()),
+            suffixIcon: IconButton(
+              onPressed: () {
+                _controller.clear();
+              },
+              icon: Icon(Icons.clear),
+            )),
+      ),
+    );
+  }
+
+  Widget toInputBox() {
+    return Container(
+      alignment: Alignment.center,
+      padding: EdgeInsets.symmetric(horizontal: 15.0),
+      height: 58,
+      decoration: const BoxDecoration(
+        color: Colors.white,
+      ),
+      child: TextField(
+        controller: _controller1,
+        onSubmitted: ((value) {
+          if (value.isNotEmpty) {
+            recentlySearch.add(value);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    SearchDetailScreen(from: from.value, to: to.value),
+              ),
+            );
+          }
+        }),
+        onChanged: (value) {
+          to.value = value;
+        },
+        decoration: InputDecoration(
+            hintText: "Vị trí muốn đến",
+            hintStyle: TextStyle(
+              color: blue,
+            ),
+            border: InputBorder.none,
+            focusedBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: blue,
+              ),
+            ),
+            suffixIcon: IconButton(
+              onPressed: () {
+                _controller1.clear();
+              },
+              icon: Icon(Icons.clear),
+            )),
       ),
     );
   }
