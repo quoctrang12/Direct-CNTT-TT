@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:location/Home_screen.dart';
-import './constrain.dart';
+import 'package:location/views/Search_Screen.dart';
+import '../constrain.dart';
 
 class OnBoardScreen extends StatelessWidget {
   const OnBoardScreen({Key? key}) : super(key: key);
@@ -8,6 +8,7 @@ class OnBoardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Container(
         color: white,
         child: Column(
@@ -18,7 +19,7 @@ class OnBoardScreen extends StatelessWidget {
                 child: Image.asset("assets/icons/icon.png")),
             Center(
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 50),
+                padding: const EdgeInsets.symmetric(vertical: 50),
                 width: MediaQuery.of(context).size.width * .75,
                 color: white,
                 child: Text(
@@ -36,10 +37,12 @@ class OnBoardScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
-                    (route) => false);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SearchScreen(),
+                  ),
+                );
               },
               child: Container(
                   height: 50,
@@ -56,7 +59,7 @@ class OnBoardScreen extends StatelessWidget {
                       ]),
                   child: Center(
                     child: Text(
-                      'Tiếp tục',
+                      'Bắt đầu tìm kiếm',
                       style: poppins.copyWith(
                         color: white,
                         fontSize: 16,
