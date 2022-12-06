@@ -6,6 +6,12 @@ import 'package:tiengviet/tiengviet.dart';
 import 'package:typicons_flutter/typicons_flutter.dart';
 
 class ManagerRoom {
+  final double _width, _height;
+
+  ManagerRoom(this._width, this._height);
+
+  get width => _width;
+  get height => _height;
   final Map _graph = {
     0: {1: 130, 2: 70, 12: 55, 13: 180, 30: 140, 31: 222},
     1: {0: 130, 13: 60, 49: 80, 61: 62, 62: 70, 64: 50, 50: 140},
@@ -87,103 +93,96 @@ class ManagerRoom {
     221: {220: 32},
   };
 
-  final Map _offset_1 = {
-    0: {"x": 235.7, "y": 608.2},
-    1: {"x": 159.14, "y": 620.6},
-    2: {"x": 261.22, "y": 571.0},
-    3: {"x": 350.54, "y": 346.56},
-    4: {"x": 88.96, "y": 440.8},
-    1005: {"x": 120.86, "y": 496.6},
-    10: {"x": 235.7, "y": 608.2},
-    11: {"x": 270.79, "y": 538.76},
-    12: {"x": 270.79, "y": 608.2},
-    13: {"x": 120.86, "y": 595.8},
-    14: {"x": 216.56, "y": 375.7},
-    15: {"x": 120.86, "y": 368.88},
-    16: {"x": 120.86, "y": 326.72},
-    17: {"x": 120.86, "y": 288.28},
-    18: {"x": 120.86, "y": 249.84},
-    19: {"x": 120.86, "y": 211.4},
-    20: {"x": 120.86, "y": 172.96},
-    21: {"x": 120.86, "y": 403.6},
-    30: {"x": 235.7, "y": 527.6},
-    31: {"x": 120.86, "y": 527.6},
-    32: {"x": 235.7, "y": 375.7},
-    33: {"x": 120.86, "y": 375.7},
-    34: {"x": 120.86, "y": 440.8},
-    35: {"x": 270.79, "y": 527.6},
-    36: {"x": 325.02, "y": 527.6},
-    37: {"x": 325.02, "y": 346.56},
-    38: {"x": 235.7, "y": 571.0},
-    100: {"x": 264.41, "y": 527.6},
-    101: {"x": 235.7, "y": 478.0},
-    102: {"x": 235.7, "y": 439.5},
-    103: {"x": 235.7, "y": 401.12},
-    104: {"x": 235.7, "y": 362.88},
-    105: {"x": 235.7, "y": 324.24},
-    106: {"x": 235.7, "y": 285.8},
-    107: {"x": 235.7, "y": 247.36},
-    108: {"x": 235.7, "y": 208.92},
-    109: {"x": 235.7, "y": 170.48},
-    110: {"x": 184.66, "y": 375.7},
-    111: {"x": 146.38, "y": 375.7},
+  // 392.7  698.2
+  late Map offset_1 = {
+    0: {"x": 235.700000 * _width - 0.5, "y": 0.871097 * _height - 1},
+    1: {"x": 0.405246 * _width - 0.5, "y": 0.888857 * _height - 1},
+    2: {"x": 0.665190 * _width - 0.5, "y": 0.817817 * _height - 1},
+    3: {"x": 0.892641 * _width - 0.5, "y": 0.496362 * _height - 1},
+    4: {"x": 0.226534 * _width - 0.5, "y": 0.631338 * _height - 1},
+    1005: {"x": 0.307767 * _width - 0.5, "y": 0.711258 * _height - 1},
+    10: {"x": 0.600204 * _width - 0.5, "y": 0.871097 * _height - 1},
+    11: {"x": 0.689559 * _width - 0.5, "y": 0.771641 * _height - 1},
+    12: {"x": 0.689559 * _width - 0.5, "y": 0.871097 * _height - 1},
+    13: {"x": 0.307767 * _width - 0.5, "y": 0.853337 * _height - 1},
+    14: {"x": 0.551464 * _width - 0.5, "y": 0.538098 * _height - 1},
+    15: {"x": 0.307767 * _width - 0.5, "y": 0.528330 * _height - 1},
+    16: {"x": 0.307767 * _width - 0.5, "y": 0.467946 * _height - 1},
+    17: {"x": 0.307767 * _width - 0.5, "y": 0.412890 * _height - 1},
+    18: {"x": 0.307767 * _width - 0.5, "y": 0.357834 * _height - 1},
+    19: {"x": 0.307767 * _width - 0.5, "y": 0.302779 * _height - 1},
+    20: {"x": 0.307767 * _width - 0.5, "y": 0.247723 * _height - 1},
+    21: {"x": 0.307767 * _width - 0.5, "y": 0.578058 * _height - 1},
+    30: {"x": 0.600204 * _width - 0.5, "y": 0.755657 * _height - 1},
+    31: {"x": 0.307767 * _width - 0.5, "y": 0.755657 * _height - 1},
+    32: {"x": 0.600204 * _width - 0.5, "y": 0.538098 * _height - 1},
+    33: {"x": 0.307767 * _width - 0.5, "y": 0.538098 * _height - 1},
+    34: {"x": 0.307767 * _width - 0.5, "y": 0.631338 * _height - 1},
+    35: {"x": 0.689559 * _width - 0.5, "y": 0.755657 * _height - 1},
+    36: {"x": 0.827655 * _width - 0.5, "y": 0.755657 * _height - 1},
+    37: {"x": 0.827655 * _width - 0.5, "y": 0.496362 * _height - 1},
+    38: {"x": 0.600204 * _width - 0.5, "y": 0.817817 * _height - 1},
+    100: {"x": 0.673313 * _width - 0.5, "y": 0.755657 * _height - 1},
+    101: {"x": 0.600204 * _width - 0.5, "y": 0.684618 * _height - 1},
+    102: {"x": 0.600204 * _width - 0.5, "y": 0.629476 * _height - 1},
+    103: {"x": 0.600204 * _width - 0.5, "y": 0.574506 * _height - 1},
+    104: {"x": 0.600204 * _width - 0.5, "y": 0.519736 * _height - 1},
+    105: {"x": 0.600204 * _width - 0.5, "y": 0.464394 * _height - 1},
+    106: {"x": 0.600204 * _width - 0.5, "y": 0.409338 * _height - 1},
+    107: {"x": 0.600204 * _width - 0.5, "y": 0.354282 * _height - 1},
+    108: {"x": 0.600204 * _width - 0.5, "y": 0.299227 * _height - 1},
+    109: {"x": 0.600204 * _width - 0.5, "y": 0.244171 * _height - 1},
+    110: {"x": 0.470232 * _width - 0.5, "y": 0.538098 * _height - 1},
+    111: {"x": 0.372753 * _width - 0.5, "y": 0.538098 * _height - 1},
   };
 
-  final Map _offset_2 = {
-    1: {"x": 159.14, "y": 625.2},
-    2: {"x": 261.22, "y": 576.2},
-    3: {"x": 350.54, "y": 346.56},
-    4: {"x": 84.72, "y": 440.4},
-    2005: {"x": 123.0, "y": 496.6},
-    40: {"x": 284.4, "y": 530.7},
-    41: {"x": 336.73, "y": 530.7},
-    42: {"x": 336.73, "y": 411.7},
-    43: {"x": 250.6, "y": 374.6},
-    44: {"x": 242.2, "y": 308.1},
-    45: {"x": 123.0, "y": 374.6},
-    46: {"x": 64.3, "y": 374.6},
-    47: {"x": 123.0, "y": 440.4},
-    48: {"x": 123.0, "y": 530.7},
-    49: {"x": 123.0, "y": 586.7},
-    50: {"x": 265.3, "y": 623.8},
-    51: {"x": 338.64, "y": 308.1},
-    52: {"x": 284.4, "y": 576.2},
-    60: {"x": 284.4, "y": 607.7},
-    61: {"x": 168.9, "y": 600.7},
-    62: {"x": 148.52, "y": 586.7},
-    63: {"x": 123.0, "y": 558.7},
-    64: {"x": 123.0, "y": 604.2},
-    100: {"x": 151.7, "y": 527.6},
-    201: {"x": 233.37, "y": 530.7},
-    202: {"x": 309.3, "y": 411.7},
-    203: {"x": 269.74, "y": 411.7},
-    204: {"x": 338.65, "y": 280.1},
-    205: {"x": 338.65, "y": 196.1},
-    206: {"x": 309.3, "y": 308.1},
-    207: {"x": 338.65, "y": 196.1},
-    208: {"x": 269.74, "y": 308.1},
-    209: {"x": 242.2, "y": 198.2},
-    210: {"x": 231.46, "y": 374.6},
-    211: {"x": 191.9, "y": 374.6},
-    212: {"x": 152.35, "y": 374.6},
-    213: {"x": 123.0, "y": 289.2},
-    214: {"x": 123.0, "y": 209.4},
-    215: {"x": 123.0, "y": 166.0},
-    216: {"x": 123.0, "y": 122.6},
-    217: {"x": 64.3, "y": 360.6},
-    218: {"x": 64.3, "y": 317.2},
-    219: {"x": 64.3, "y": 282.2},
-    220: {"x": 64.3, "y": 247.2},
-    221: {"x": 64.3, "y": 226.2},
+  late Map offset_2 = {
+    1: {"x": 0.405246 * _width - 0.5, "y": 0.895445 * _height - 1},
+    2: {"x": 0.665190 * _width - 0.5, "y": 0.825265 * _height - 1},
+    3: {"x": 0.892641 * _width - 0.5, "y": 0.496362 * _height - 1},
+    4: {"x": 0.215737 * _width - 0.5, "y": 0.630765 * _height - 1},
+    2005: {"x": 0.313216 * _width - 0.5, "y": 0.711258 * _height - 1},
+    40: {"x": 0.724217 * _width - 0.5, "y": 0.760097 * _height - 1},
+    41: {"x": 0.857474 * _width - 0.5, "y": 0.760097 * _height - 1},
+    42: {"x": 0.857474 * _width - 0.5, "y": 0.589659 * _height - 1},
+    43: {"x": 0.638146 * _width - 0.5, "y": 0.536522 * _height - 1},
+    44: {"x": 0.616756 * _width - 0.5, "y": 0.441278 * _height - 1},
+    45: {"x": 0.313216 * _width - 0.5, "y": 0.536522 * _height - 1},
+    46: {"x": 0.163738 * _width - 0.5, "y": 0.536522 * _height - 1},
+    47: {"x": 0.313216 * _width - 0.5, "y": 0.630765 * _height - 1},
+    48: {"x": 0.313216 * _width - 0.5, "y": 0.760097 * _height - 1},
+    49: {"x": 0.313216 * _width - 0.5, "y": 0.840304 * _height - 1},
+    50: {"x": 0.675579 * _width - 0.5, "y": 0.893440 * _height - 1},
+    51: {"x": 0.862338 * _width - 0.5, "y": 0.441278 * _height - 1},
+    52: {"x": 0.724217 * _width - 0.5, "y": 0.825265 * _height - 1},
+    60: {"x": 0.724217 * _width - 0.5, "y": 0.870381 * _height - 1},
+    61: {"x": 0.430099 * _width - 0.5, "y": 0.860355 * _height - 1},
+    62: {"x": 0.378202 * _width - 0.5, "y": 0.840304 * _height - 1},
+    63: {"x": 0.313216 * _width - 0.5, "y": 0.800201 * _height - 1},
+    64: {"x": 0.313216 * _width - 0.5, "y": 0.865368 * _height - 1},
+    100: {"x": 0.386300 * _width - 0.5, "y": 0.755657 * _height - 1},
+    201: {"x": 0.594270 * _width - 0.5, "y": 0.760097 * _height - 1},
+    202: {"x": 0.787624 * _width - 0.5, "y": 0.589659 * _height - 1},
+    203: {"x": 0.686886 * _width - 0.5, "y": 0.589659 * _height - 1},
+    204: {"x": 0.862363 * _width - 0.5, "y": 0.401174 * _height - 1},
+    205: {"x": 0.862363 * _width - 0.5, "y": 0.280865 * _height - 1},
+    206: {"x": 0.787624 * _width - 0.5, "y": 0.441278 * _height - 1},
+    207: {"x": 0.862363 * _width - 0.5, "y": 0.280865 * _height - 1},
+    208: {"x": 0.686886 * _width - 0.5, "y": 0.441278 * _height - 1},
+    209: {"x": 0.616756 * _width - 0.5, "y": 0.283873 * _height - 1},
+    210: {"x": 0.589407 * _width - 0.5, "y": 0.536522 * _height - 1},
+    211: {"x": 0.488668 * _width - 0.5, "y": 0.536522 * _height - 1},
+    212: {"x": 0.387955 * _width - 0.5, "y": 0.536522 * _height - 1},
+    213: {"x": 0.313216 * _width - 0.5, "y": 0.414208 * _height - 1},
+    214: {"x": 0.313216 * _width - 0.5, "y": 0.299914 * _height - 1},
+    215: {"x": 0.313216 * _width - 0.5, "y": 0.237754 * _height - 1},
+    216: {"x": 0.313216 * _width - 0.5, "y": 0.175594 * _height - 1},
+    217: {"x": 0.163738 * _width - 0.5, "y": 0.516471 * _height - 1},
+    218: {"x": 0.163738 * _width - 0.5, "y": 0.454311 * _height - 1},
+    219: {"x": 0.163738 * _width - 0.5, "y": 0.404182 * _height - 1},
+    220: {"x": 0.163738 * _width - 0.5, "y": 0.354053 * _height - 1},
+    221: {"x": 0.163738 * _width - 0.5, "y": 0.323976 * _height - 1},
   };
-
-  Map get offset_1 {
-    return _offset_1;
-  }
-
-  Map get offset_2 {
-    return _offset_2;
-  }
 
   Map get graph {
     return _graph;
@@ -195,63 +194,78 @@ class ManagerRoom {
   }
 
   int nameToCode(String title) {
-    if (title.toLowerCase().startsWith("phong")) {
-      return int.parse(title.substring(title.indexOf(' ') + 1));
-    } else {
-      switch (title.toLowerCase()) {
-        case "khoa cong nghe thong tin":
-          return 20;
-        case "khoa tin hoc ung dung":
-          return 19;
-        case "khoa truyen thong da phuong tien":
-          return 19;
-        case "khoa mang may tinh va truyen thong":
-          return 18;
-        case "khoa khoa hoc may tinh":
-          return 17;
-        case "khoa cong nghe phan mem":
-          return 16;
-        case "khoa he thong thong tin":
-          return 15;
-        case "phong ky thuat":
-          return 21;
-        case "nha ve sinh tang 1":
-          return 1005;
-        case "nha ve sinh tang 2":
-          return 2005;
-        case "khong gian sang che":
-          return 13;
-        case "trung tam tin hoc":
-          return 14;
-        case "van phong khoa":
-          return 12;
-        case "thu vien":
-          return 11;
-        case "hoi truong khoa":
-          return 60;
-        case "van phong doan":
-          return 100;
-        case "sanh khoa":
-          return 0;
-        case "phong hop 1":
-          return 61;
-        case "phong hop 2":
-          return 63;
-        case "phong giao vien thinh giang":
-          return 62;
-        case "van phong bcn khoa":
-          return 64;
-        case "cau thang 1":
-          return 1;
-        case "cau thang 2":
-          return 2;
-        case "cau thang 3":
-          return 3;
-        case "cau thang 4":
-          return 4;
-        default:
-          return int.parse(title);
+    try {
+      if (title.toLowerCase().startsWith("phong")) {
+        if (title.toLowerCase().startsWith("phong hop")) {
+          switch (title.toLowerCase()) {
+            case "phong hop 1":
+              return 61;
+            case "phong hop 2":
+              return 63;
+            default:
+              return -1;
+          }
+        } else {
+          return int.parse(title.substring(title.indexOf(' ') + 1));
+        }
+      } else {
+        switch (title.toLowerCase()) {
+          case "khoa cong nghe thong tin":
+            return 20;
+          case "khoa tin hoc ung dung":
+            return 19;
+          case "khoa truyen thong da phuong tien":
+            return 19;
+          case "khoa mang may tinh va truyen thong":
+            return 18;
+          case "khoa khoa hoc may tinh":
+            return 17;
+          case "khoa cong nghe phan mem":
+            return 16;
+          case "khoa he thong thong tin":
+            return 15;
+          case "phong ky thuat":
+            return 21;
+          case "nha ve sinh tang 1":
+            return 1005;
+          case "nha ve sinh tang 2":
+            return 2005;
+          case "khong gian sang che":
+            return 13;
+          case "trung tam tin hoc":
+            return 14;
+          case "van phong khoa":
+            return 12;
+          case "thu vien":
+            return 11;
+          case "hoi truong khoa":
+            return 60;
+          case "van phong doan":
+            return 100;
+          case "sanh khoa":
+            return 0;
+          case "phong hop 1":
+            return 61;
+          case "phong hop 2":
+            return 63;
+          case "phong giao vien thinh giang":
+            return 62;
+          case "van phong bcn khoa":
+            return 64;
+          case "cau thang 1":
+            return 1;
+          case "cau thang 2":
+            return 2;
+          case "cau thang 3":
+            return 3;
+          case "cau thang 4":
+            return 4;
+          default:
+            return int.parse(title);
+        }
       }
+    } catch (e) {
+      return -1;
     }
   }
 
@@ -494,17 +508,24 @@ class ManagerRoom {
   }
 }
 
-// ${testTwoPoint(start, prevEnd)!},
+// // ${testTwoPoint(start, prevEnd)!},
 void main(List<String> args) {
-  List arr = ManagerRoom().searchRoom(from: "0", to: "21");
+  List arr = ManagerRoom(392.7, 698.2).searchRoom(from: "0", to: "21");
 
   print(arr.runtimeType);
+  ManagerRoom(392.7, 698.2).offset_2.forEach(
+    (key, value) {
+      print(
+          '$key: { "x":${value["x"] / 392.7} * _width, "y": ${(value["y"] / 698.2)}* _height },\n');
+    },
+  );
   // for (var i = 0; i < arr.length - 1; i++) {
   //   print(
-  //       "${arr[i]} - ${arr[i + 1]} : ${ManagerRoom()._graph[arr[i]][arr[i + 1]]}");
+  //       "${arr[i]} - ${arr[i + 1]} : ${ManagerRoom( 392.7 .2)._graph[arr[i]][arr[i + 1]]}");
   // }
-  // print(ManagerRoom().route(arr.first, arr.last, arr, []));
-  print(ManagerRoom().route(arr, ManagerRoom()._offset_1));
+  // print(ManagerRoom( 392.7 .2).route(arr.first, arr.last, arr, []));
+  print(
+      ManagerRoom(392.7, 698.2).route(arr, ManagerRoom(392.7, 698.2).offset_1));
 }
 
 // final Map _graph = {
